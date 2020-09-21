@@ -1,87 +1,72 @@
-//create a variable to hold one ball
 let b;
 let anotherBall;
 let thirdBall;
-let fourthBall;
+let cloud1;
+let cloud2;
+
+
+
 
 function setup() {
   createCanvas(800, 400);
-  b = new Ball(0, 100,"red"); //make a new ball from the Ball class and call it b.
-  anotherBall = new Ball(200,20,"yellow");
-  thirdBall = new Ball(100,150, "orange");
-  fourthBall = new Ball(200,300, "purple");
+  b = new Ball(90, 150,"blue");
+  thirdBall = new Ball(40, 60, "red");
+  anotherBall = new Ball(100,20,"orange");
+  cloud1 = new Cloud(200,150);
+  cloud2 = new Cloud(150,350);
 }
 
 
 function draw(){
-	background("blue");
-    b.drawBall(); //draw the ball called b (go look in the Ball class for the drawBall function)
-    b.moveBall(); //move the ball called b (go look in the Ball class for the moveBall function)
-    anotherBall.drawBall();
-    anotherBall.moveBall();
-    thirdBall.drawBall();
-    thirdBall.moveBall();
-    fourthBall.drawBall();
-    fourthBall.moveBall();
+	background("green");
+  background("green");
+      b.drawBall();
+      b.moveBall();
+      anotherBall.drawBall();
+      anotherBall.moveBall();
+      cloud1.drawCloud();
+      cloud1.moveCloud();
+      cloud2.drawCloud();
+      cloud2.moveCloud();
 
 }
 
 
-//ball class from which to create new balls with similar properties.
-class Ball {
+class Ball{
 
-	constructor(x,y,color){ //every ball needs an x value and a y value
-		    this.x = x;
+  constructor(x,y,color){
+		this.x = x;
     		this.y = y;
-        this.color= color;
+           this.color = color;
+	  }
+  drawBall(){
+    stroke(2);
+    fill(this.color);
+    ellipse(this.x,this.y,10,10);
 	}
-	drawBall(){  // draw a ball on the screen at x,y
-    		stroke(0);
-    		fill(this.color);
-		    hypercube(this.x,this.y,10,10);
-	}
-	moveBall(){ //update the location of the ball, so it moves across the screen
-		this.x = this.x+2;
-		this.y = this.y+.5;
-	}
+
+  moveBall(){
+    this.x = this.x+2;
+    this.y = this.y+.5;
+  }
 }
-  function hypercube_1(x,y) {
-  push();
-  noFill();
-  line(x+125-140,y+105-140,x+125-140,y+170-140);
-  line(x+105-140,y+125-140,x+170-140,y+125-140);
-  line(x+105-140,y+150-140,x+170-140,y+150-140);
-  line(x+150-140,y+170-140,x+150-140,y+105-140);
-  line(x+150-140,y+105-140,x+105-140,y+150-140);
-  line(x+105-140,y+125-140,x+150-140,y+170-140);
-  line(x+125-140,y+170-140,x+170-140,y+125-140);
-  line(x+170-140,y+150-140,x+125-140,y+105-140);
-  line(x+105-140,y+125-140,x+105-140,y+60-140);
-  line(x+105-140,y+60-140,x+170-140,y+60-140);
-  line(x+170-140,y+60-140,x+170-140,y+125-140);
-  line(x+150-140,y+105-140,x+215-140,y+105-140);
-  line(x+215-140,y+105-140,x+215-140,y+170-140);
-  line(x+215-140,y+170-140,x+150-140,y+170-140);
-  line(x+170-140,y+150-140,x+170-140,y+215-140);
-  line(x+170-140,y+215-140,x+105-140,y+215-140);
-  line(x+105-140,y+215-140,x+105-140,y+150-140);
-  line(x+125-140,y+170-140,x+60-140,y+170-140);
-  line(x+60-140,y+170-140,x+60-140,y+105-140);
-  line(x+60-140,y+105-140,x+125-140,y+105-140);
-  line(x+105-140,y+150-140,x+60-140,y+105-140);
-  line(x+60-140,y+105-140,x+105-140,y+60-140);
-  line(x+105-140,y+60-140,x+150-140,y+105-140);
-  line(x+125-140,y+105-140,x+170-140,y+60-140);
-  line(x+170-140,y+60-140,x+215-140,y+105-140);
-  line(x+215-140,y+105-140,x+170-140,y+150-140);
-  line(x+170-140,y+125-140,x+170-140,y+170-140);
-  line(x+215-140,y+170-140,x+170-140,y+215-140);
-  line(x+170-140,y+215-140,x+125-140,y+170-140);
-  line(x+150-140,y+170-140,x+105-140,y+215-140);
-  line(x+105-140,y+215-140,x+60-140,y+170-140);
-  line(x+60-140,y+170-140,x+105-140,y+125-140);
-  pop();
-}
-function hypercube(x,y) {
-hypercube_1(x+2.5,y+2.5);
+
+
+class Cloud {
+
+	constructor(x,y){
+    		this.x = x;
+        this.y = y;
+
+	}
+	drawCloud(){
+    		noStroke();
+    		fill(255);
+		    ellipse(this.x, this.y, 60, 60);
+        ellipse(this.x + 30, this.y, 60, 60);
+        ellipse(this.x + 20, this.y - 30, 60, 60);
+	}
+  moveCloud(){
+    this.x = this.x + 0.5
+  }
 }
