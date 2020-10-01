@@ -10,7 +10,7 @@ function preload() {
 //
 //   //create an animation from a sequence of numbered images
 //   //pass the first and the last file name and it will try to find the ones in between
-  ghost = loadAnimation('assets/000.png','assets/002.png');
+  ghost = loadAnimation('assets/face1.png', 'assets/face6.png');
 
 }
 
